@@ -4,7 +4,7 @@ namespace TaskThree
     {
         public Test()
         {
-            new Processor.CreateEngine<MyEngine>().For<MyEntity>().With<MyLogger>();
+            var processor = new ProcessorBuilder.CreateEngine<MyEngine>().For<MyEntity>().With<MyLogger>();
         }
     }
 }

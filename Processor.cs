@@ -1,21 +1,26 @@
-﻿using System;
-using TaskThree;
-
-namespace TaskThree
+﻿namespace TaskThree
 {
-    public class Processor
+    public class ProcessorBuilder
     {
         public class CreateEngine<TEngine>
         {
-            public CreateEngine<TEngine> For<TEntity>()
+            public CreateEngine<TEngine, TEntity> For<TEntity>()
             {
-                return this;
-            }
-
-            public void With<TLogger>()
-            {
-                
+                return new CreateEngine<TEngine, TEntity>();
             }
         }
+
+        public class CreateEngine<TEngine, TEntity>
+        {
+            public Processor<TEngine, TEntity, TLogger> With<TLogger>()
+            {
+                return new Processor<TEngine, TEntity, TLogger>();
+            }
+        }
+    }
+
+    public class Processor<TEngine, TEntity, TLogger>
+    {
+
     }
 }
