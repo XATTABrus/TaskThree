@@ -40,12 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyEngine.cs" />
-    <Compile Include="MyEntity.cs" />
-    <Compile Include="MyLogger.cs" />
-    <Compile Include="Processor.cs" />
+    <Compile Include="Part1\MyEngine.cs" />
+    <Compile Include="Part1\MyEntity.cs" />
+    <Compile Include="Part1\MyLogger.cs" />
+    <Compile Include="Part1\Processor.cs" />
+    <Compile Include="Part1\ProcessorBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test.cs" />
+    <Compile Include="Part1\Test.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Part2\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -18,9 +18,4 @@
             }
         }
     }
-
-    public class Processor<TEngine, TEntity, TLogger>
-    {
-
-    }
 }
