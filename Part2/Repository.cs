@@ -1,13 +1,12 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace TaskThree.Part2
 {
-    static class Repository
+    public static class Repository
     {
-        private static Hashtable _repository;
-        static Repository() { _repository = new Hashtable(); }
+        private static readonly Dictionary<Guid, object> _repository;
+        static Repository() { _repository = new Dictionary<Guid, object>(); }
 
         public static T Create<T>() where T : class, new() // Ввел ограничение на наличие ссылочного типа, посколькоку в 3 методе должна быть возможность возвращать null. 
         {
@@ -22,7 +21,7 @@ namespace TaskThree.Part2
             foreach (var item in _repository.Keys)
             {
                 var obj = _repository[item];
-                if (obj is T)
+                if (obj.GetType() == typeof(T))
                     resultDictionary.Add((Guid)item, (T)obj);
             }
             return resultDictionary;
@@ -30,9 +29,10 @@ namespace TaskThree.Part2
 
         public static T GetObjectByGuid<T> (Guid guid) where T : class
         {
-            if (!_repository.Contains(guid))
-                return null;
-            return _repository[guid] as T;
+            object result;
+            _repository.TryGetValue(guid, out result);
+
+            return result as T;
         }
     }
 }
